@@ -76,13 +76,13 @@ __bpf_kfunc void bpf_put_mem_cgroup(struct mem_cgroup *memcg)
 }
 
 /**
- * bpf_mem_cgroup_events - Read memory cgroup's event counter
+ * bpf_mem_cgroup_vm_events - Read memory cgroup's vm event counter
  * @memcg: memory cgroup
  * @event: event id
  *
  * Allows to read memory cgroup event counters.
  */
-__bpf_kfunc unsigned long bpf_mem_cgroup_events(struct mem_cgroup *memcg,
+__bpf_kfunc unsigned long bpf_mem_cgroup_vm_events(struct mem_cgroup *memcg,
 						enum vm_event_item event)
 {
 	return memcg_events(memcg, event);
@@ -142,7 +142,7 @@ BTF_ID_FLAGS(func, bpf_get_root_mem_cgroup, KF_ACQUIRE | KF_RET_NULL)
 BTF_ID_FLAGS(func, bpf_get_mem_cgroup, KF_ACQUIRE | KF_RET_NULL | KF_RCU)
 BTF_ID_FLAGS(func, bpf_put_mem_cgroup, KF_RELEASE)
 
-BTF_ID_FLAGS(func, bpf_mem_cgroup_events, KF_TRUSTED_ARGS)
+BTF_ID_FLAGS(func, bpf_mem_cgroup_vm_events, KF_TRUSTED_ARGS)
 BTF_ID_FLAGS(func, bpf_mem_cgroup_usage, KF_TRUSTED_ARGS)
 BTF_ID_FLAGS(func, bpf_mem_cgroup_page_state, KF_TRUSTED_ARGS)
 BTF_ID_FLAGS(func, bpf_mem_cgroup_flush_stats, KF_TRUSTED_ARGS)
