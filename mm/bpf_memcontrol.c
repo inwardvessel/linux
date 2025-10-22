@@ -125,9 +125,14 @@ __bpf_kfunc unsigned long bpf_mem_cgroup_page_state(struct mem_cgroup *memcg, in
  * performance. So bpf_mem_cgroup_flush_stats() guarantees only
  * that statistics is not stale beyond 2*FLUSH_TIME.
  */
-__bpf_kfunc void bpf_mem_cgroup_flush_stats(struct mem_cgroup *memcg)
+__bpf_kfunc void bpf_mem_cgroup_flush_stats_ratelimited(struct mem_cgroup *memcg)
 {
 	mem_cgroup_flush_stats_ratelimited(memcg);
+}
+
+__bpf_kfunc void bpf_mem_cgroup_flush_stats(struct mem_cgroup *memcg)
+{
+	mem_cgroup_flush_stats(memcg);
 }
 
 __bpf_kfunc_end_defs();
