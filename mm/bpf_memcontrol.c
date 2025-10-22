@@ -116,7 +116,7 @@ __bpf_kfunc unsigned long bpf_mem_cgroup_memory_events(struct mem_cgroup *memcg,
 }
 
 /**
- * bpf_mem_cgroup_events - Read memory cgroup's page state counter
+ * bpf_mem_cgroup_page_state - Read memory cgroup's page state counter
  * @memcg: memory cgroup
  * @event: counter idx
  *
